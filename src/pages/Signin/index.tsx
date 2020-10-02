@@ -1,4 +1,5 @@
 import React, { useRef, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -27,6 +28,7 @@ const Signin: React.FC = () => {
 
     const { signIn } = useAuth();
     const { addToast } = useToast();
+    const history = useHistory();
 
     const handleOnSubmit = useCallback(async (data: SignInFormData) => {
         try {
@@ -47,6 +49,8 @@ const Signin: React.FC = () => {
                 email: data.email,
                 password: data.password
             });
+
+            history.push('/dashboard')
 
             addToast({
                 type: 'success',
@@ -69,7 +73,7 @@ const Signin: React.FC = () => {
                 description: 'Ocorreu um erro ao fazer login, cheque as credenciais.'
             });
         }
-    }, [signIn, addToast]);
+    }, [signIn, addToast, history]);
     
     return (
         <>
