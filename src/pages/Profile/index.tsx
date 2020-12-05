@@ -72,8 +72,6 @@ const Profile: React.FC = () => {
                 password_confirmation,
             }: {});
 
-            console.log(formData);
-
             const response = await api.put('/profile', formData);
 
             history.push('/dashboard');
