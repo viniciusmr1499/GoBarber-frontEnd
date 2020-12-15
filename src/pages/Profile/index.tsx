@@ -66,7 +66,7 @@ const Profile: React.FC = () => {
             const formData = Object.assign({
                 name,
                 email,
-            }, old_password ? {
+            }, old_password.length ? {
                 old_password,
                 password,
                 password_confirmation,
